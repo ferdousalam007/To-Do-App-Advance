@@ -209,6 +209,7 @@ tbody#tableBody td {
     padding: 3px;
     margin-bottom: 4px;
     border-radius: 3px;
+    transition: .2s;
 }
 td button{
     cursor: pointer;
@@ -224,4 +225,8 @@ td button{
 } 
 .mr{
     margin-right: 12px;
+}
+tbody#tableBody tr:hover td {
+    background: #d4a600;
+   
 }

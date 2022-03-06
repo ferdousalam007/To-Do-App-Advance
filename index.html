@@ -35,7 +35,7 @@
                 </div>
                 <div class="date">
                     <label for="date">Date:</label>
-                    <input type="date" name="date" id="date" />
+                    <input type="date" name="date" id="date" /><span id="result"></span>
                 </div>
                 <div>
                     <label for="date" class="v_hidden"> submit</label>
@@ -86,37 +86,13 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody id="tableBody">
-          <tr>
-            <td>1</td>
-            <td>Reading</td>
-            <td>High</td>
-            <td>Incomplete</td>
-            <td>03-01-2022</td>
-            <td class="td_button">
-              <button class="mr"><i class="fas fa-pen-fancy"></i></button>
-              <button class="mr"><i class="fas fa-check"></i></button>
-              <button><i class="fas fa-trash"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Reading</td>
-            <td>High</td>
-            <td>Incomplete</td>
-            <td>03-01-2022</td>
-            <td class="td_button">
-              <button class="mr"><i class="fas fa-pen-fancy"></i></button>
-              <button class="mr"><i class="fas fa-check"></i></button>
-              <button><i class="fas fa-trash"></i></button>
-            </td>
-          </tr>
-        </tbody>
+        <tbody id="tableBody"></tbody>
       </table>
 
       <!-- task management section end  -->
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
     <script src="index.js"></script>
 </body>
 
