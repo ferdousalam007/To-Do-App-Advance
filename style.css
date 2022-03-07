@@ -188,6 +188,7 @@ select#sort {
     padding: 10px 15px;
     cursor: pointer;
 }
+
 input#byDate {
     width: 100%;
     height: 35px;
@@ -196,37 +197,51 @@ input#byDate {
     border-radius: 5px;
     padding: 0 0 0 15px;
 }
+
 table {
     width: 100%;
     margin-top: 20px;
 }
+
 tr td {
     text-align: center;
 }
+
 tbody#tableBody td {
     background: #69077e;
-    color: #ffffff!important;
+    color: #ffffff !important;
     padding: 3px;
     margin-bottom: 4px;
     border-radius: 3px;
     transition: .2s;
 }
-td button{
+
+td button {
     cursor: pointer;
     background: none;
     border: none;
     outline: none;
 }
- td  i {
+
+td i {
     font-size: 18px;
     pointer-events: none;
     color: #ececec;
-    
-} 
-.mr{
+
+}
+
+.mr {
     margin-right: 12px;
 }
+
 tbody#tableBody tr:hover td {
     background: #d4a600;
-   
+
+}
+
+[data-bg="imcomplete"] {
+    background-color: #0cb78400!important;
+}
+#status[data-bg="complete"] {
+    background-color: #00684987!important;
 }
