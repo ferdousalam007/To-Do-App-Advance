@@ -245,3 +245,24 @@ tbody#tableBody tr:hover td {
 #status[data-bg="complete"] {
     background-color: #00684987!important;
 }
+.save_task{
+    color: #e2fff6;
+    font-size: 16px;
+    background: #68db8e79!important;
+    width: 100%;
+    padding: 3px;
+}
+.save_task i{
+    margin-right: 5px;
+    color: #FFC700;
+    font-size: 20px;
+}
+td input, td select {
+    width: 100%;
+    border: none;
+    background: #ffd3f8;
+    font-size: 15px;
+    padding: 3px;
+    color: #343434;
+    border-radius: 2px;
+}

@@ -58,7 +58,7 @@ form.addEventListener('submit', function (e) {
 //get task show on UI
 function showUi({ name, priority, status, date, id }, index) {
     const tr = document.createElement('tr');
-    tr.innerHTML =`
+    tr.innerHTML = `
                     <tr>
                         <td id ='no'>${index}</td>
                         <td id ='name'>${name}</td>
@@ -103,7 +103,7 @@ tbody.addEventListener('click', function (e) {
         check(e)
     }
     else if (e.target.id === 'update') {
-        console.log('hh3');
+        updateTasks(e)
     }
 })
 
@@ -132,15 +132,15 @@ function check(e) {
     const allTd = tr.children;
     let tasks = getDataLocalStorage();
     [...allTd].forEach(td => {
-        
+
         if (td.id == 'status') {
-            
+
             tasks.forEach(task => {
                 if (task.id === id) {
                     if (task.status === 'incomplete') {
                         task.status = 'complete';
                         td.innerHTML = 'complete';
-                        
+
 
                         // return task;
                     } else {
@@ -154,7 +154,116 @@ function check(e) {
 
         }
     })
-  
+
     setDataLocalStorage(tasks);
     load();
+}
+
+//03-action---- update-button action
+function updateTasks(e) {
+    const tr = (e.target.parentElement.parentElement);
+    const id = tr.dataset.id;
+    const trChil = tr.children;
+
+
+
+    // for save button 
+    //name
+    let nameTd;
+    let NameValue;
+    //Priority
+    let selectTd;
+    let selectPriority;
+    //date
+    let dateTd;
+    let dateInput;
+    //butoon
+    let buttonTd;
+    let previousBUtton;
+
+
+
+    [...trChil].forEach(td => {
+        if (td.id == 'name') {
+            nameTd = td;
+            const previousName = td.textContent;
+            td.textContent = '';
+            NameValue = document.createElement('input');
+            NameValue.type = 'text';
+            NameValue.value = previousName;
+            td.appendChild(NameValue);
+
+        }
+        else if (td.id == 'priority') {
+            selectTd = td;
+            const previousPriority = td.textContent;
+            td.textContent = '';
+            selectPriority = document.createElement('select');
+            selectPriority.innerHTML = `
+                        <option disabled>Select one</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+            `;
+            if (previousPriority == 'high') {
+                selectPriority.selectedIndex = 1;
+            }
+            else if (previousPriority == 'medium') {
+                selectPriority.selectedIndex = 2;
+            }
+            else if (previousPriority == 'low') {
+                selectPriority.selectedIndex = 3;
+            }
+            td.appendChild(selectPriority);
+        }
+        else if (td.id == 'date') {
+            dateTd = td;
+            const previousDate = td.textContent;
+            td.textContent = '';
+            dateInput = document.createElement('input');
+            dateInput.type = 'date';
+            dateInput.value = previousDate;
+            td.appendChild(dateInput);
+
+        }
+        else if (td.id == 'action') {
+            buttonTd=td;
+            previousBUtton = td.innerHTML;
+            td.innerHTML = ''
+            const saveBtn = document.createElement('button');
+            saveBtn.classList.add('save_task');
+            saveBtn.innerHTML = `<i class='fas fa-file-export'></i>Save Task`;
+            saveBtn.addEventListener('click', function () {
+                //name
+                const nameValue = NameValue.value;
+                nameTd.innerHTML = nameValue;
+                //priority
+                const priorityValue = selectPriority.value;
+                selectTd.innerHTML = priorityValue;
+                //date
+                const dateValue = dateInput.value;
+                dateTd.innerHTML = dateValue;
+                //action button
+                 buttonTd.innerHTML=previousBUtton;
+
+                //save data local storage
+                let tasks = getDataLocalStorage();
+                tasks = tasks.filter(task => {
+                    if (task.id == id) {
+                        task.name = nameValue;
+                        task.priority = priorityValue;
+                        task.date = dateValue;
+                        return task;
+                    } else {
+                        return task;
+                    }
+                })
+                setDataLocalStorage(tasks);
+
+            })
+            td.appendChild(saveBtn)
+
+        }
+    })
+
 }
