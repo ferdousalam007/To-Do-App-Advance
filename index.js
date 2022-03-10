@@ -18,6 +18,9 @@ const tbody = getId('tableBody');
 const deleteBtn = getId('delete');
 const checkBtn = getId('check');
 const updateBtn = getId('update');
+const taskName = getId('task_name');
+const filter = getId('filter');
+const sort = getId('sort');
 let todaytDate = new Date().toISOString().slice(0, 10);
 date.value = todaytDate;
 
@@ -227,7 +230,7 @@ function updateTasks(e) {
 
         }
         else if (td.id == 'action') {
-            buttonTd=td;
+            buttonTd = td;
             previousBUtton = td.innerHTML;
             td.innerHTML = ''
             const saveBtn = document.createElement('button');
@@ -244,7 +247,7 @@ function updateTasks(e) {
                 const dateValue = dateInput.value;
                 dateTd.innerHTML = dateValue;
                 //action button
-                 buttonTd.innerHTML=previousBUtton;
+                buttonTd.innerHTML = previousBUtton;
 
                 //save data local storage
                 let tasks = getDataLocalStorage();
@@ -267,3 +270,97 @@ function updateTasks(e) {
     })
 
 }
+
+
+//-----------Filtering--------------//
+
+//01 filtering by task name
+
+taskName.addEventListener('input', function (e) {
+    filter.selectedIndex=0;
+    const inputNameValue = e.target.value.toLowerCase();
+    tbody.innerHTML = '';
+    const tasks = getDataLocalStorage();
+    let index = 0;
+    tasks.forEach(task => {
+        if (task.name.toLowerCase().includes(inputNameValue)) {
+            ++index;
+            showUi(task, index)
+        }
+    })
+})
+
+//02 filtering by filter dropdown
+filter.addEventListener('change', function (e) {
+    taskName.value='';
+    tbody.innerHTML = '';
+    const searchFilter = e.target.value;
+    const tasks = getDataLocalStorage();
+    let index = 0;
+    switch (searchFilter) {
+        case "all":
+            tasks.forEach(task => {
+                ++index;
+                showUi(task, index)
+            })
+            break;
+        case "complete":
+            tasks.forEach(task=>{
+                if(task.status=='complete'){
+                    ++index;
+                    showUi(task,index);
+                }
+            })
+            break;
+        case "incomplete":
+            tasks.forEach(task=>{
+                if(task.status=='incomplete'){
+                    ++index;
+                    showUi(task,index);
+                }
+            })
+            break;
+        case "today":
+            tasks.forEach(task=>{
+                if(task.date==todaytDate){
+                    ++index;
+                    showUi(task,index);
+                }
+            })
+            break;
+        case "high":
+            tasks.forEach(task=>{
+                if(task.priority=='high'){
+                    ++index;
+                    showUi(task,index);
+                }
+            })
+            break;
+        case "medium":
+            tasks.forEach(task=>{
+                if(task.priority=='medium'){
+                    ++index;
+                    showUi(task,index);
+                }
+            })
+            break;
+        case "low":
+            tasks.forEach(task=>{
+                if(task.priority=='low'){
+                    ++index;
+                    showUi(task,index);
+                }
+            })
+            break;
+
+    }
+})
+
+//03 filtering by sort new to old dropdown
+sort.addEventListener('change',function(){
+    taskName.value='';
+    filter.selectedIndex=0;
+    const sortValue =this.value;
+    const tasks=getDataLocalStorage();
+   
+})

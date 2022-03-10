@@ -2,48 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo Advance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo Advance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>Create Advance To-Do App</h1>
-        <div class="task_add">
-            <h2>Create New Task</h2>
-            <!-- task adding form start -->
-            <form id="form">
-                <div class="taskName">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Enter your task name here......" />
-                </div>
-                <div class="priority">
-                    <label for="priority">Priority:</label>
-                    <select name="priority" id="priority">
-                        <option disabled>Select one</option>
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
-                    </select>
-                </div>
-                <div class="date">
-                    <label for="date">Date:</label>
-                    <input type="date" name="date" id="date" /><span id="result"></span>
-                </div>
-                <div>
-                    <label for="date" class="v_hidden"> submit</label>
-                    <input type="submit" value="Add Task" />
-                </div>
-            </form>
-            <!-- task adding form end -->
-            <!-- task management section start  -->
+  <div class="container">
+    <h1>Create Advance To-Do App</h1>
+    <div class="task_add">
+      <h2>Create New Task</h2>
+      <!-- task adding form start -->
+      <form id="form">
+        <div class="taskName">
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" placeholder="Enter your task name here......" />
+        </div>
+        <div class="priority">
+          <label for="priority">Priority:</label>
+          <select name="priority" id="priority">
+            <option disabled>Select one</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <div class="date">
+          <label for="date">Date:</label>
+          <input type="date" name="date" id="date" /><span id="result"></span>
+        </div>
+        <div>
+          <label for="date" class="v_hidden"> submit</label>
+          <input type="submit" value="Add Task" />
+        </div>
+      </form>
+      <!-- task adding form end -->
+      <!-- task management section start  -->
       <h2 class="sub_title">Task Management</h2>
       <div class="separator"></div>
       <div class="tools">
@@ -55,7 +55,7 @@
           <label for="filtering">Filter:</label>
           <select name="filter" id="filter">
             <option value="all">All</option>
-            <option value="complect">Complete</option>
+            <option value="complete">Complete</option>
             <option value="incomplete">Incomplete</option>
             <option value="today">Today</option>
             <option value="high">High</option>
@@ -90,10 +90,10 @@
       </table>
 
       <!-- task management section end  -->
-        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
-    <script src="index.js"></script>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+  <script src="index.js"></script>
 </body>
 
 </html>
