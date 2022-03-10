@@ -277,7 +277,7 @@ function updateTasks(e) {
 //01 filtering by task name
 
 taskName.addEventListener('input', function (e) {
-    filter.selectedIndex=0;
+    filter.selectedIndex = 0;
     const inputNameValue = e.target.value.toLowerCase();
     tbody.innerHTML = '';
     const tasks = getDataLocalStorage();
@@ -292,7 +292,7 @@ taskName.addEventListener('input', function (e) {
 
 //02 filtering by filter dropdown
 filter.addEventListener('change', function (e) {
-    taskName.value='';
+    taskName.value = '';
     tbody.innerHTML = '';
     const searchFilter = e.target.value;
     const tasks = getDataLocalStorage();
@@ -305,50 +305,50 @@ filter.addEventListener('change', function (e) {
             })
             break;
         case "complete":
-            tasks.forEach(task=>{
-                if(task.status=='complete'){
+            tasks.forEach(task => {
+                if (task.status == 'complete') {
                     ++index;
-                    showUi(task,index);
+                    showUi(task, index);
                 }
             })
             break;
         case "incomplete":
-            tasks.forEach(task=>{
-                if(task.status=='incomplete'){
+            tasks.forEach(task => {
+                if (task.status == 'incomplete') {
                     ++index;
-                    showUi(task,index);
+                    showUi(task, index);
                 }
             })
             break;
         case "today":
-            tasks.forEach(task=>{
-                if(task.date==todaytDate){
+            tasks.forEach(task => {
+                if (task.date == todaytDate) {
                     ++index;
-                    showUi(task,index);
+                    showUi(task, index);
                 }
             })
             break;
         case "high":
-            tasks.forEach(task=>{
-                if(task.priority=='high'){
+            tasks.forEach(task => {
+                if (task.priority == 'high') {
                     ++index;
-                    showUi(task,index);
+                    showUi(task, index);
                 }
             })
             break;
         case "medium":
-            tasks.forEach(task=>{
-                if(task.priority=='medium'){
+            tasks.forEach(task => {
+                if (task.priority == 'medium') {
                     ++index;
-                    showUi(task,index);
+                    showUi(task, index);
                 }
             })
             break;
         case "low":
-            tasks.forEach(task=>{
-                if(task.priority=='low'){
+            tasks.forEach(task => {
+                if (task.priority == 'low') {
                     ++index;
-                    showUi(task,index);
+                    showUi(task, index);
                 }
             })
             break;
@@ -357,10 +357,35 @@ filter.addEventListener('change', function (e) {
 })
 
 //03 filtering by sort new to old dropdown
-sort.addEventListener('change',function(){
-    taskName.value='';
-    filter.selectedIndex=0;
-    const sortValue =this.value;
-    const tasks=getDataLocalStorage();
-   
+sort.addEventListener('change', function () {
+    tbody.innerHTML = '';
+    taskName.value = '';
+    filter.selectedIndex = 0;
+    const sortValue = this.value;
+    let tasks = getDataLocalStorage();
+    tasks.forEach(task => {
+        let dt = new Date(task.date);
+        task.date = dt;
+    })
+    // let sortedActivities = tasks.sort((a, b) => b.date - a.date);
+    // let sortedActivities2 = tasks.sort((c, d) =>d.date - c.date);
+    // console.log(sortedActivities2);
+    if (sortValue == 'newest') {
+       
+        console.log('n');
+        tasks.forEach((task, i) => {
+            task.date = task.date.toISOString().slice(0, 10);
+            console.log(task);
+            showUi(task, i + 1);
+        })
+    }
+    else if(sortValue=='oldest'){
+        console.log('o');
+        tasks.sort((a, b) => b.date - a.date);
+        tasks.forEach((task,i)=>{
+            task.date = task.date.toISOString().slice(0, 10);
+            console.log(task);
+            showUi(task,i+1);
+        })
+    }
 })
